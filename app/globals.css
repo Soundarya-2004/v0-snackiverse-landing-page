@@ -4,7 +4,7 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  /* <CHANGE> Updated to cosmic pastel theme */
+  /* Cosmic pastel theme with vibrant accents */
   --background: oklch(0.98 0.01 280);
   --foreground: oklch(0.15 0.02 280);
   --card: oklch(1 0 0);
@@ -15,29 +15,29 @@
   --primary-foreground: oklch(0.98 0.01 280);
   --secondary: oklch(0.75 0.18 40);
   --secondary-foreground: oklch(0.15 0.02 280);
-  --accent: oklch(0.72 0.22 320);
-  --accent-foreground: oklch(0.98 0.01 280);
   --muted: oklch(0.92 0.01 280);
   --muted-foreground: oklch(0.5 0.05 280);
+  --accent: oklch(0.72 0.22 320);
+  --accent-foreground: oklch(0.98 0.01 280);
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.577 0.245 27.325);
   --border: oklch(0.92 0.02 280);
   --input: oklch(0.92 0.02 280);
   --ring: oklch(0.65 0.2 290);
-  --chart-1: oklch(0.65 0.2 290);
-  --chart-2: oklch(0.72 0.22 320);
-  --chart-3: oklch(0.75 0.18 40);
-  --chart-4: oklch(0.7 0.2 260);
-  --chart-5: oklch(0.68 0.19 10);
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
   --radius: 0.625rem;
-  --sidebar: oklch(0.98 0.01 280);
-  --sidebar-foreground: oklch(0.15 0.02 280);
-  --sidebar-primary: oklch(0.65 0.2 290);
-  --sidebar-primary-foreground: oklch(0.98 0.01 280);
-  --sidebar-accent: oklch(0.72 0.22 320);
-  --sidebar-accent-foreground: oklch(0.15 0.02 280);
-  --sidebar-border: oklch(0.92 0.02 280);
-  --sidebar-ring: oklch(0.65 0.2 290);
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: oklch(0.205 0 0);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
 }
 
 .dark {
@@ -76,8 +76,7 @@
 }
 
 @theme inline {
-  --font-sans: "Geist", "Geist Fallback";
-  --font-mono: "Geist Mono", "Geist Mono Fallback";
+  /* optional: --font-sans, --font-serif, --font-mono if they are applied in the layout.tsx */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -125,7 +124,7 @@
   }
 }
 
-/* <CHANGE> Added cosmic animation utilities */
+/* Enhanced cosmic animations */
 @layer utilities {
   .animate-float {
     animation: float 6s ease-in-out infinite;
@@ -137,6 +136,22 @@
 
   .animate-twinkle {
     animation: twinkle 3s ease-in-out infinite;
+  }
+
+  .animate-pulse-slow {
+    animation: pulse-slow 4s ease-in-out infinite;
+  }
+
+  .animate-rotate-slow {
+    animation: rotate-slow 20s linear infinite;
+  }
+
+  .animate-slide-up {
+    animation: slide-up 0.6s ease-out;
+  }
+
+  .animate-scale-in {
+    animation: scale-in 0.5s ease-out;
   }
 }
 
@@ -167,5 +182,46 @@
   }
   50% {
     opacity: 1;
+  }
+}
+
+@keyframes pulse-slow {
+  0%,
+  100% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes rotate-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
   }
 }
